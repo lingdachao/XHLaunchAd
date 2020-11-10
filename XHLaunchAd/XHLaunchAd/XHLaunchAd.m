@@ -350,6 +350,9 @@ static  SourceType _sourceType = SourceTypeLaunchImage;
             [_adVideoView.videoPlayer.player play];
         }else{
             XHWeakSelf
+            _adVideoView.fileURL = [NSURL URLWithString:configuration.videoNameOrURLString];
+            _adVideoView.muted = configuration.muted;
+            [_adVideoView.videoPlayer.player play];
             [[XHLaunchAdDownloader sharedDownloader] downloadVideoWithURL:[NSURL URLWithString:configuration.videoNameOrURLString] progress:^(unsigned long long total, unsigned long long current) {
                 if ([weakSelf.delegate respondsToSelector:@selector(xhLaunchAd:videoDownLoadProgress:total:current:)]) {
                     [weakSelf.delegate xhLaunchAd:self videoDownLoadProgress:current/(float)total total:total current:current];
@@ -362,7 +365,7 @@ static  SourceType _sourceType = SourceTypeLaunchImage;
                 }
             }];
             /***视频缓存,提前显示完成 */
-            [self removeAndAnimateDefault]; return;
+//            [self removeAndAnimateDefault]; return;
         }
     }else{
         if(configuration.videoNameOrURLString.length){

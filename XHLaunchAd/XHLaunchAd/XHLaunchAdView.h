@@ -41,6 +41,7 @@
 @property (nonatomic, assign) BOOL videoCycleOnce;
 @property (nonatomic, assign) BOOL muted;
 @property (nonatomic, strong) NSURL *contentURL;
+@property (nonatomic, strong) NSURL *fileURL;
 
 -(void)stopVideoPlayer;
 

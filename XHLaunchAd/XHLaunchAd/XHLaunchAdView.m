@@ -133,6 +133,14 @@ static NSString *const VideoPlayStatus = @"status";
     // 监听播放失败状态
     [self.playerItem addObserver:self forKeyPath:VideoPlayStatus options:NSKeyValueObservingOptionNew context:nil];
 }
+
+- (void)setFileURL:(NSURL *)fileURL {
+    _fileURL = fileURL;
+    _videoPlayer.player = [[AVPlayer alloc] initWithURL:_fileURL];
+    // 监听播放失败状态
+    [self.playerItem addObserver:self forKeyPath:VideoPlayStatus options:NSKeyValueObservingOptionNew context:nil];
+}
+
 -(void)setVideoGravity:(AVLayerVideoGravity)videoGravity{
     _videoGravity = videoGravity;
     _videoPlayer.videoGravity = videoGravity;
